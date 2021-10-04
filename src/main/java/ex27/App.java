@@ -27,28 +27,45 @@ public class App {
         validateInput(first, last, zipcode, ID);
     }
 
-    static void validateInput(String first, String last, String zipcode, String ID)
+    static int validateInput(String first, String last, String zipcode, String ID)
     {
-        if(!validateNameFilled(first))
+        int flag = 0;
+
+        if(!validateNameFilled(first)) {
             System.out.println("The first name must be filled.");
+            flag = 1;
+        }
 
-        else if(!validateNameLength(first))
+        if(!validateNameLength(first)) {
             System.out.println("The first name must be at least 2 characters long.");
+            flag = 1;
+        }
 
-        else if(!validateNameFilled(last))
+        if(!validateNameFilled(last)) {
             System.out.println("The last name must be filled.");
+            flag = 1;
+        }
 
-        else if(!validateNameLength(first))
+        if(!validateNameLength(last)) {
             System.out.println("The last name must be at least 2 characters long.");
+            flag = 1;
+        }
 
-        else if(!validateZip(zipcode))
+        if(!validateZip(zipcode)) {
             System.out.println("The zipcode must be a 5 digit number.");
+            flag = 1;
+        }
 
-        else if(!validateID(ID))
+        if(!validateID(ID)) {
             System.out.println("The ID must be in the format of AA-1234");
+            flag = 1;
+        }
 
-        else
-            System.out.println("There were no errors found.");
+        if(flag == 1)
+            return 0;
+
+        System.out.println("There were no errors found.");
+        return 1;
     }
 
     static Boolean validateNameLength(String name)

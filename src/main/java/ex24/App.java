@@ -10,6 +10,8 @@ import java.util.Arrays;
 
 public class App {
 
+    public Boolean isAnagram;
+
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);

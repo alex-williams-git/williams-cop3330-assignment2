@@ -10,20 +10,32 @@ public class App {
 
     public static void main(String[] args)
     {
-        System.out.printf("The sum of the numbers is: %d", sumNumbers());
+        int[] inputArray = scanInput();
+        System.out.printf("The sum of the numbers is: %d", sumNumbers(inputArray));
     }
 
-    static int sumNumbers()
+    static int[] scanInput()
     {
-        int sum = 0;
         Scanner scan = new Scanner(System.in);
 
-        int temp_sum = 0;
-        for (int i = 1; i < 6; i++)
+        int[] ret = new int[5];
+
+        for(int i = 0; i < 5; i++)
         {
             System.out.print("Enter a number: ");
-            temp_sum = scan.nextInt();
-            sum += temp_sum;
+            ret[i] = scan.nextInt();
+        }
+
+        return ret;
+    }
+
+    static int sumNumbers(int[] numberArray)
+    {
+        int sum = 0;
+
+        for (int i = 0; i < 5; i++)
+        {
+            sum += numberArray[i];
         }
 
         return sum;

@@ -18,14 +18,26 @@ public class App {
         String userInput = scan.nextLine();
         System.out.println();
 
-        magicGame();
+        int randNum = generateRandomNum();
+
+        magicGame(randNum);
     }
 
-    static void magicGame()
+    static int generateRandomNum()
     {
-        String[] responses = {"Yes", "No", "Maybe", "Ask again later."};
         int random_num = (int)(4 * Math.random());
 
-        System.out.println(responses[random_num]);
+        return random_num;
+    }
+
+    static String magicGame(int randNum)
+    {
+        String[] responses = {"Yes", "No", "Maybe", "Ask again later."};
+
+        System.out.println(responses[randNum]);
+
+        String ret = responses[randNum];
+
+        return ret;
     }
 }

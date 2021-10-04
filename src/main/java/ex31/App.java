@@ -22,6 +22,13 @@ public class App {
         printTargetHR(resting_HR, age);
     }
 
+    static int calculateTargetHR(int resting_HR, int age, double intensity)
+    {
+        int target_HR = (int)Math.round((((220 - age) - resting_HR) * intensity) + resting_HR);
+
+        return target_HR;
+    }
+
     static void printTargetHR(int resting_HR, int age)
     {
         System.out.printf("%-15s | %-10s", "Intensity", "Rate");
@@ -30,7 +37,7 @@ public class App {
 
         for(double i = 0.55; i < 1.0; i += 0.05)
         {
-            int target_HR = (int)Math.round((((220 - age) - resting_HR) * i) + resting_HR);
+            int target_HR = calculateTargetHR(resting_HR, age, i);
             String display_intensity = String.format("%.0f", i * 100);
 
             System.out.printf("%s%%             | %d bpm", display_intensity, target_HR);

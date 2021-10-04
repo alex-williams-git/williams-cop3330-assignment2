@@ -4,7 +4,6 @@
  */
 
 package ex29;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.lang.Math;
 
@@ -12,22 +11,23 @@ public class App {
 
     public static void main(String[] args)
     {
-        System.out.println("It will take " + String.format("%.0f", trapInput()) + " years to double your initial investment.");
+        int rate = trapInput();
+        System.out.println("It will take " + String.format("%.0f", calculateInvestmentTime(rate)) + " years to double your initial investment.");
     }
 
-    static double trapInput()
+    static int trapInput()
     {
         Scanner scan = new Scanner(System.in);
 
-        double rate = 0;
+        int rate = 0;
         boolean isNumber;
 
         do
         {
             System.out.print("Enter an integer value please: ");
-            if (scan.hasNextDouble())
+            if (scan.hasNextInt())
             {
-                rate = scan.nextDouble();
+                rate = scan.nextInt();
 
                 if(rate == 0)
                 {
@@ -45,6 +45,11 @@ public class App {
             }
         }while(!isNumber);
 
+        return rate;
+    }
+
+    static double calculateInvestmentTime(int rate)
+    {
         double years = Math.ceil(72 / rate);
 
         return years;

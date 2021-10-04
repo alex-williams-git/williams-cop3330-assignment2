@@ -12,14 +12,15 @@ public class App {
     {
         String[] employeeList = {"Joe Johnson", "Amanda Smith", "Jane Doe", "Will Smith", "Matthew McConaughey"};
 
-        removeEmployee(employeeList);
+        String employeeToRemove = findEmployeeToRemove(employeeList);
+
+        removeEmployee(employeeList, employeeToRemove);
     }
 
-    static void removeEmployee(String[] employees)
+    static String findEmployeeToRemove(String[] employees)
     {
         Scanner scan = new Scanner(System.in);
         int num_employees = employees.length;
-        String[] newEmployees = new String[num_employees - 1];
 
         System.out.printf("There are %d employees: \n", num_employees);
 
@@ -32,6 +33,14 @@ public class App {
         System.out.print("Enter an employee name to remove: ");
         String employeeToRemove = scan.nextLine();
         System.out.println();
+
+        return employeeToRemove;
+    }
+
+    static String[] removeEmployee(String[] employees, String employeeToRemove)
+    {
+        int num_employees = employees.length;
+        String[] newEmployees = new String[num_employees - 1];
 
         int removeIndex = 0;
 
@@ -55,5 +64,7 @@ public class App {
         {
             System.out.println(newEmployees[i]);
         }
+
+        return newEmployees;
     }
 }
