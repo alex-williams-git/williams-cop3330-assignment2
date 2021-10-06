@@ -12,13 +12,17 @@ public class App {
 
     public static void main(String[] args)
     {
-        ArrayList<String> peopleList = new ArrayList<String>();
+        ArrayList<String> peopleList = getContestantList();
 
-        pickWinner(peopleList);
+        String winner = pickWinner(peopleList);
+
+        System.out.println("The winner is... " + winner);
     }
 
-    static void pickWinner(ArrayList<String> peopleList)
+    static ArrayList<String> getContestantList()
     {
+        ArrayList<String> contestantList = new ArrayList<>();
+
         Scanner scan = new Scanner(System.in);
         String userInput = "";
 
@@ -29,13 +33,18 @@ public class App {
             if(userInput.equals(""))
                 continue;
 
-            peopleList.add(userInput);
+            contestantList.add(userInput);
 
         }while(!userInput.equals(""));
 
+        return contestantList;
+    }
+
+    static String pickWinner(ArrayList<String> peopleList)
+    {
         int length = peopleList.size();
         int winnerIndex = (int)(length * Math.random());
 
-        System.out.println("The winner is... " + peopleList.get(winnerIndex));
+        return peopleList.get(winnerIndex);
     }
 }

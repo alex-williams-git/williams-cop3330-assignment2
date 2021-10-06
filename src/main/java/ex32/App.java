@@ -14,18 +14,25 @@ public class App {
         String userIn = "";
 
         do{
-            guessingGame();
+            int difficulty = getDifficulty();
+            guessingGame(difficulty);
             System.out.print("Do you want to play again (y/n): ");
             userIn = scan.nextLine();
         }while(userIn.equals("y") || userIn.equals(" "));
     }
 
-    static int guessingGame() {
+    static int getDifficulty()
+    {
         Scanner scan = new Scanner(System.in);
 
         System.out.print("Enter the difficulty level (1, 2, or 3): ");
         int difficulty = scan.nextInt();
 
+        return difficulty;
+    }
+
+    static int giveRandomNumber(int difficulty)
+    {
         int answer = 0;
 
         if (difficulty == 1) {
@@ -39,6 +46,15 @@ public class App {
         if (difficulty == 3) {
             answer = 1 + (int) (1000 * Math.random());
         }
+
+        return answer;
+    }
+
+    static int guessingGame(int difficulty)
+    {
+        Scanner scan = new Scanner(System.in);
+
+        int answer = giveRandomNumber(difficulty);
 
         System.out.print("I have my number. What's your guess? ");
         int guess = scan.nextInt();
@@ -59,8 +75,8 @@ public class App {
             guess = scan.nextInt();
 
             if (guess == answer) {
-                System.out.printf("Wow you got it in %d guess!", i);
-                return 1;
+                System.out.printf("Wow you got it in %d guess!", i + 1);
+                return i + 1;
             }
 
             if (guess < answer && i != 9)

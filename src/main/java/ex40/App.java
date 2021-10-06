@@ -29,6 +29,24 @@ public class App {
         employeeList.add(employee5);
         employeeList.add(employee6);
 
+        String searchResult = getSearch();
+
+        List<Employee> sortedList = getSearchResults(employeeList, searchResult);
+    }
+
+    public static String getSearch()
+    {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Enter a search string: ");
+        String search = scan.nextLine();
+        System.out.println();
+
+        return search;
+    }
+
+    public static List<Employee> getSearchResults(List<Employee> employeeList, String search)
+    {
         for(int i = 0; i < employeeList.size(); i++)
         {
             String temp = employeeList.get(i).getLast();
@@ -50,12 +68,6 @@ public class App {
                 }
             }
         }
-
-        Scanner scan = new Scanner(System.in);
-
-        System.out.print("Enter a search string: ");
-        String search = scan.nextLine();
-        System.out.println();
 
         List<Employee> searchResults = new ArrayList<>();
 
@@ -81,5 +93,7 @@ public class App {
             System.out.printf("%-20s | %-20s | %-15s", searchResults.get(i).getName(), searchResults.get(i).getPosition(), searchResults.get(i).getSepDate());
             System.out.println();
         }
+
+        return searchResults;
     }
 }

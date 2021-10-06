@@ -27,6 +27,11 @@ public class App {
         employeeList.add(employee5);
         employeeList.add(employee6);
 
+        List<Employee> updatedList = sortEmployees(employeeList);
+    }
+
+    public static List<Employee> sortEmployees(List<Employee> employeeList)
+    {
         for(int i = 0; i < employeeList.size(); i++)
         {
             String temp = employeeList.get(i).getLast();
@@ -57,5 +62,7 @@ public class App {
             System.out.printf("%-20s | %-20s | %-15s", employeeList.get(i).getName(), employeeList.get(i).getPosition(), employeeList.get(i).getSepDate());
             System.out.println();
         }
+
+        return employeeList;
     }
 }
